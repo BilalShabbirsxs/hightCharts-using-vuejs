@@ -1,0 +1,62 @@
+[
+  {
+    "month": "Jan",
+    "revenue": 100,
+    "cost": 50
+  },
+    {
+    "month": "Feb",
+    "revenue": 150,
+    "cost": 75
+  },
+    {
+    "month": "Mar",
+    "revenue": 200,
+    "cost": 100
+  },
+    {
+    "month": "Apr",
+    "revenue": 300,
+    "cost": 150
+  },
+     {
+    "month": "May",
+    "revenue": 350,
+    "cost": 170
+  },
+     {
+    "month": "Jun",
+    "revenue": 350,
+    "cost": 100
+  },
+     {
+    "month": "Jul",
+    "revenue": 500,
+    "cost": 220
+  },
+     {
+    "month": "Aug",
+    "revenue": 400,
+    "cost": 200
+  },
+     {
+    "month": "Sep",
+    "revenue": 450,
+    "cost": 100
+  },
+     {
+    "month": "Oct",
+    "revenue": 700,
+    "cost": 280
+  },
+  {
+    "month": "Nov",
+    "revenue": 900,
+    "cost": 400
+  },
+     {
+    "month": "Dec",
+    "revenue": 1200,
+    "cost": 350
+  }
+]
