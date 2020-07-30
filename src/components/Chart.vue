@@ -1,6 +1,6 @@
 <template>
   <div >
-
+    <button @click="setUser()">Log out</button>
     <highcharts :options="chartOptions" ></highcharts>
       
   </div>
@@ -72,9 +72,9 @@ export default {
             this.months.push(element.month)
           });
 
-          console.log(this.cost)
-          console.log(this.revenue)
-          console.log(this.profit)
+          // console.log(this.cost)
+          // console.log(this.revenue)
+          // console.log(this.profit)
           this.chartOptions.series = [{
             name: 'Revnue',
             data: this.revenue
@@ -91,9 +91,13 @@ export default {
             this.chartOptions.xAxis.categories = this.months
         })
       
-      
-      
-
+  },
+  methods:{
+     setUser(){
+        //this.$emit('childToParent', false)
+        this.$cookies.remove('user')
+        location.reload();
+    },
   }
 }
 </script>

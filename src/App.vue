@@ -1,26 +1,32 @@
 <template>
   <div id="app">
-    <keep-alive>
-      <Chart />
+    <keep-alive v-if="this.$cookies.get('user')">
+      <Chart v-on:childToParent="onChildClick" />
     </keep-alive>
+    <Login v-else v-on:childToParent="onChildClick" />
   </div>
 </template>
 
 <script>
-import Chart from './components/Chart.vue'
-
+import Chart from './components/Chart.vue';
+import Login from './components/Login.vue';
 
 export default {
   name: 'app',
   data () {
     return {
+      fromChild: false
     }
   },
   components: {
-    Chart
+    Chart,
+    Login
   },
   methods: {
-
+        // Triggered when `childToParent` event is emitted by the child.
+    onChildClick (value) {
+      this.fromChild = value
+    }
   }
 }
 </script>
