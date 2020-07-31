@@ -55,12 +55,14 @@ export default {
   },
   created () {
    
-      const url = 'https://api.jsonbin.io/b/5f216dcd91806166284b5a2b'
+      //const url = 'https://api.jsonbin.io/b/5f216dcd91806166284b5a2b'
+      const url = 'http://127.0.0.1:8000/charts/'
       const response = axios.get(url,{
-        headers: {
-              'secret-key': '$2b$10$FKh4sUigY15yRqFs1RwXNeumUc/lK0dJiE59sTv0OnfggitiKRbpK'
-            }
-        })
+        headers:{
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer '+this.$cookies.get('token')
+        }
+      })
         .then(response=>{
           this.seriesData = response.data
           console.log(response.data)
@@ -95,7 +97,7 @@ export default {
   methods:{
      setUser(){
         //this.$emit('childToParent', false)
-        this.$cookies.remove('user')
+        this.$cookies.remove('token')
         location.reload();
     },
   }

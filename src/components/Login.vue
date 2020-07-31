@@ -14,9 +14,7 @@
       </div>
       <div class="checkbox-container">
         <div class="text-checkbox">Remember me <input type="checkbox" id="rememberme" v-model="rememberMe"></div>
-        
-        
-      </div> 
+      </div>
       <div class="button-area">
         <button class="btn btn-primary pull-right" @click="login()" >Login</button>
       </div>
@@ -34,7 +32,9 @@ export default {
     return {
       rememberMe: false,
       username: "",
-      password: ""
+      password: "",
+      flag: false,
+      message: "Incorrect Username or Password"
     };
   },
 
@@ -42,30 +42,30 @@ export default {
     isRememberMe() {
       return this.rememberMe === true;
     },
-    toParent(){
-        this.$emit('childToParent', true)
-    },
+    // toParent(){
+    //     this.$emit('childToParent', true)
+    // },
+
     login() {
-      const url = 'https://api.jsonbin.io/b/5f228e0a250d377b5dc6c3d9'
-      axios
-        .get(url, {
-          headers:{
-              'secret-key': '$2b$10$FKh4sUigY15yRqFs1RwXNeumUc/lK0dJiE59sTv0OnfggitiKRbpK'
-          }
-        })
-        .then(response => {
-            //console.log(response)
-            if(response.data.username===this.username && response.data.password===this.password){
-                //this.$emit('childToParent', true)
-                this.$cookies.set("user", "2h")
-                location.reload();
-            }else{
-                alert("Incorrect email or password");
-            }
-        })
-        .catch(err => {
-          alert(err);
-        });
+      try{
+          const url = 'http://127.0.0.1:8000/api/token/'
+          axios.post(url, {
+            username: this.username,
+            password: this.password
+          })
+          .then(response => {
+              this.flag = true
+              //console.log(response)
+              //this.$emit('childToParent', true)
+              this.$cookies.set("token", response.data.access)
+              location.reload();
+           
+
+          })
+        }catch(error){
+          alert(error)
+          
+        }
     },
     register() {
       alert("Coming soon ...");

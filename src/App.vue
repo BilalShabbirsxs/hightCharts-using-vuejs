@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <keep-alive v-if="this.$cookies.get('user')">
+    <keep-alive v-if="this.$cookies.get('token')">
       <Chart v-on:childToParent="onChildClick" />
     </keep-alive>
     <Login v-else v-on:childToParent="onChildClick" />
